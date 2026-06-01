@@ -160,27 +160,27 @@ else{
     setcookie('languages_error', '', 100000);
 }
 
-$user = 'u82197';
-$pass = '6410666';
-$db = new PDO('mysql:host=localhost;dbname=u82197', $user, $pass,
+$user = 'u82624';
+$pass = '8440989';
+$db = new PDO('mysql:host=localhost;dbname=u82624', $user, $pass,
   [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
 try {
   $db->beginTransaction();
   
-  $stmt = $db->prepare("INSERT INTO users (name, phone, email, birthdate, sex, biography) VALUES (?, ?, ?, ?, ?, ?)");
+  $stmt = $db->prepare("INSERT INTO userses (name, phone, email, birthdate, sex, biography) VALUES (?, ?, ?, ?, ?, ?)");
   $stmt->execute([
     $_POST['name'],
     $_POST['phone'] ?? null,
     $_POST['email'] ?? null,
     $_POST['birthdate'] ?? null,
-    $_POST['sexr'],
+    $_POST['sex'],
     $_POST['biography'] ?? null
   ]);
   
   $user_id = $db->lastInsertId();
   
-  $lang_stmt = $db->prepare("INSERT INTO user_languages (user_id, language) VALUES (?, ?)");
+  $lang_stmt = $db->prepare("INSERT INTO user_languages2 (user_id, language) VALUES (?, ?)");
   foreach ($_POST['languages'] as $lang) {
     $lang_stmt->execute([$user_id, $lang]);
   }
