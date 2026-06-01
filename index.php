@@ -117,11 +117,11 @@ if (!empty($_POST['birthdate'])) {
   }
 }
 
-$allowed_genders = ['male', 'female'];
-if (empty($_POST['gender'])) {
+$allowed_sex = ['male', 'female'];
+if (empty($_POST['sex'])) {
   $errors = TRUE;
   setcookie('sex_error', '1', time() + 24 * 60 * 60);
-} elseif (!in_array($_POST['sex'], $allowed_genders)) {
+} elseif (!in_array($_POST['sex'], $allowed_sex)) {
   $errors = TRUE;
   setcookie('sex_error', '1', time() + 24 * 60 * 60);
 }
